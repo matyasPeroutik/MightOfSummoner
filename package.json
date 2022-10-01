@@ -1,0 +1,29 @@
+{
+  "name": "mightofsummoner",
+  "version": "1.0.0",
+  "description": "Rewrite of The Mighty Summoner",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc ./index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matyasPeroutik/MightOfSummoner.git"
+  },
+  "author": "Matyas Peroutik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matyasPeroutik/MightOfSummoner/issues"
+  },
+  "homepage": "https://github.com/matyasPeroutik/MightOfSummoner#readme",
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "discord.js": "^14.5.0",
+    "dotenv": "^16.0.3"
+  }
+}

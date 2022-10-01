@@ -27,8 +27,13 @@ client.on('interactionCreate', async interaction => {
 	if (!interaction.isChatInputCommand()) return;
 
 	const { commandName } = interaction;
-
-    comList[commandName](interaction);
+    try{
+        await comList[commandName](interaction);
+    }
+    catch(e){
+        console.error(e)
+        await interaction.reply('An error has occured on server side of the bot. I apologize for this.')
+    }
 })
 
 

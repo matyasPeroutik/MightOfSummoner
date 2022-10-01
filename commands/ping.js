@@ -1,3 +1,3 @@
-exports.command = (interaction) => {
-    console.log(' hello ')
+exports.command = async (interaction) => {
+    await interaction.reply('Pong !')
 }

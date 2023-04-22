@@ -4,6 +4,9 @@ const requests = require('../classes/requests')
 const axios = require('axios')
 
 module.exports = {
+    /**
+     * Object containing command information
+     */
     data : new SlashCommandBuilder()
         .setName('mmr')
         .setDescription('Tells you an MMR of a desired summoner!')
@@ -21,27 +24,30 @@ module.exports = {
             .setRequired(true)
             ),
         
-    
+    /**
+     * Function executing the command
+     * @param {*} interaction 
+     */
     async execute(interaction){
         const region = interaction.options.getString('region')
         const name   = interaction.options.getString('name')
 
-        // Ziskani dat ohledne hracova MMR
+        // Loading player MMR data
         axios.get(`https://${region}.whatismymmr.com/api/v1/summoner?name=${name.replace(' ', '+')}`)
         .then(async res => {
             const data = res.data;
 
-            // Uprava regionu EUNE na EUN1, kvuli API
+            // Rewrite of 'eune' to 'eun1' due to API structure
             let url_reg = region;
             if(url_reg === 'eune') url_reg = 'eun1';
 
-            //Vytvoreni classy summoner (../classes/summoner.js)
+            // Summoner instance init - Class is holding data about the summoner
             const sum = new Summoner(url_reg, name)
 
-            // Load dat z duvodu PROMISSE
+            // Loading player data into the class
             await sum.loadData()
 
-            // UPRAVA Description
+            // Creating description based on loaded data from MMR API
             let desc
             try{
                 desc = data['ranked']['summary']
@@ -55,6 +61,7 @@ module.exports = {
                 desc = 'No description found'
             }
 
+            // Adding more fields to the object
             const icoID = await sum.getIconId()
             const icoURL = await requests.getIcon(icoID)
             const embed = new EmbedBuilder()
@@ -65,7 +72,7 @@ module.exports = {
             
                 ;
 
-            // Generace fieldu na zaklade dat z MMR stranky co nasel Vitek
+            // Generation of MMR field and adding it to the object
             for ( [key, val] of Object.entries(data) ){
                 let mmr;
                 try{

@@ -3,6 +3,12 @@ const { Summoner } = require("../classes/summoner")
 const requests = require('../classes/requests')
 const axios = require('axios')
 
+/**
+ * Module containing MMR command
+ * 
+ * The command is used to get data about summoner's MMR.
+ * It uses DDragon API and LeagueAPI for profile image and WhatIsMyMMR API for MMR data
+ */
 module.exports = {
     /**
      * Object containing command information
@@ -28,7 +34,7 @@ module.exports = {
      * Function executing the command
      * @param {*} interaction 
      */
-    async execute(interaction){
+    async execute({client, interaction}){
         const region = interaction.options.getString('region')
         const name   = interaction.options.getString('name')
 

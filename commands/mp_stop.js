@@ -3,11 +3,9 @@ const { MessageEmbed } = require("discord.js")
 const { QueryType } = require("discord-player")
 
 /**
- * Module containing Music-Player PLAY command.
+ * Module containing Music-Player STOP command.
  * 
- * This command joins the bot into the channel and plays desired song
- * 
- * 
+ * This command stops playing on a server
  */
 module.exports = {
     /**

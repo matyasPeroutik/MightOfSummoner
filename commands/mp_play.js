@@ -96,12 +96,10 @@ module.exports = {
             if (pl.tracks.length < amnt) amnt = pl.tracks.length
             
             // Generate track list to show on the output
-            let songs = pl.tracks.splice(0, amnt-1)
             let songsStr = ""
-            songs.forEach(song => {
-                console.log(song)
-                songsStr += '\t' + song.raw.title + '\n'
-            })
+            for(var i = 0; i < amnt; i++){
+                songsStr += '\t' + pl.tracks[i].raw.title + '\n'
+            }
 
             // If there are more than 5 songs in the playlist
             if(pl.tracks.length > 5) songsStr += `\t ... and ${pl.tracks.length-5} more songs!!`

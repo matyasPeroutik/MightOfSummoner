@@ -33,8 +33,11 @@ module.exports = {
          * Get the GuildQueuePlayerNode object from queue
          * @description at https://discord-player.js.org/docs/classes/discord-player/GuildQueuePlayerNode#public-getdurationmultiplier-number
          */
+
+        // Node initialization
         let qnode = queue.node
 
+        // Skip location calculations
         let param = interaction.options.getInteger('amm')
         if(param === null) qnode.skip()
         else {

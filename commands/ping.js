@@ -19,7 +19,7 @@ module.exports = {
 	 * Function executing the command
 	 * @param {*} interaction 
 	 */
-	async execute(interaction) {
+	async execute({client, interaction}) {
 		await interaction.reply('Pong!');
 	},
 };

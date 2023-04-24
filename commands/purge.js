@@ -20,7 +20,7 @@ module.exports = {
 	 * Function executing the command
 	 * @param {*} interaction 
 	 */
-	async execute(interaction) {
+	async execute({client, interaction}) {
         const messageAmmount = interaction.options.getInteger('ammount')
 		await interaction.channel.bulkDelete(messageAmmount, true);
         await interaction.reply(`${messageAmmount} messages has been vaporized, or atleast has been attempted to.`)
